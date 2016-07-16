@@ -21,6 +21,8 @@ if (!process.env.PRODUCTION) {
     key: fs.readFileSync('./key.pem'),
     cert: fs.readFileSync('./cert.pem')
   };
+} else {
+  manifest.connections[0].host = undefined;
 }
 
 Glue.compose(manifest, { relativeTo: __dirname }, (err, server) => {

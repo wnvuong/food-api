@@ -1,11 +1,12 @@
 var Yelp = require('yelp');
+const secretProperties = require('../../secretProperties');
 
 console.log()
 var yelp = new Yelp({
-  consumer_key: process.env.YELP_CONSUMER_KEY,
-  consumer_secret: process.env.YELP_CONSUMER_SECRET,
-  token: process.env.YELP_TOKEN,
-  token_secret: process.env.YELP_TOKEN_SECRET
+  consumer_key: secretProperties.YELP_CONSUMER_KEY,
+  consumer_secret: secretProperties.YELP_CONSUMER_SECRET,
+  token: secretProperties.YELP_TOKEN,
+  token_secret: secretProperties.YELP_TOKEN_SECRET
 });
 
 module.exports.restaurants = {

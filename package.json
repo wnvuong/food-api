@@ -9,8 +9,8 @@
   "main": "server.js",
   "scripts": {
     "test": "./node_modules/lab/bin/lab -v",
-    "start": "source env.sh; node server.js",
-    "production": "node server.js",
+    "start": "node server.js",
+    "production": "PRODUCTION=true node server.js",
     "lint": "eslint . --ext .js --ignore node_modules/**"
   },
   "author": "William Vuong",

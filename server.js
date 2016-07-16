@@ -7,8 +7,8 @@ const manifest = require('./config/manifest.json');
 // https://certsimple.com/blog/localhost-ssl-fix
 const fs = require('fs');
 const options = {
-  key: fs.readFileSync(process.env.KEY_PATH),
-  cert: fs.readFileSync(process.env.CERT_PATH)
+  key: fs.readFileSync('./key.pem'),
+  cert: fs.readFileSync('./cert.pem')
 }
 
 if (!process.env.PRODUCTION) {

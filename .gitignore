@@ -40,3 +40,4 @@ jspm_packages
 cert.pem
 key.pem
 env.sh
+secretProperties.js

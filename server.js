@@ -3,13 +3,7 @@
 const Glue = require('glue');
 const Hapi = require('hapi');
 const manifest = require('./config/manifest.json');
-
-// https://certsimple.com/blog/localhost-ssl-fix
 const fs = require('fs');
-const options = {
-  key: fs.readFileSync('./key.pem'),
-  cert: fs.readFileSync('./cert.pem')
-}
 
 if (!process.env.PRODUCTION) {
   manifest.registrations.push({
@@ -18,7 +12,11 @@ if (!process.env.PRODUCTION) {
       "options": {}
     }
   });
-  manifest.connections[0].tls = options;
+  // https://certsimple.com/blog/localhost-ssl-fix
+  manifest.connections[0].tls = {
+    key: fs.readFileSync('./key.pem'),
+    cert: fs.readFileSync('./cert.pem')
+  };
 }
 
 Glue.compose(manifest, { relativeTo: __dirname }, (err, server) => {

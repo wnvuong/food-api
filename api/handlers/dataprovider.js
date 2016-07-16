@@ -1,7 +1,6 @@
 var Yelp = require('yelp');
 const secretProperties = require('../../secretProperties');
 
-console.log()
 var yelp = new Yelp({
   consumer_key: secretProperties.YELP_CONSUMER_KEY,
   consumer_secret: secretProperties.YELP_CONSUMER_SECRET,

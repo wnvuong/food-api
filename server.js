@@ -5,10 +5,6 @@ const Hapi = require('hapi');
 const manifest = require('./config/manifest.json');
 const fs = require('fs');
 
-if (process.env.PORT) {
-  manifest.connections[0].port = process.env.PORT;
-}
-
 if (!process.env.PRODUCTION) {
   manifest.registrations.push({
     "plugin": {
@@ -23,6 +19,11 @@ if (!process.env.PRODUCTION) {
   };
 } else {
   manifest.connections[0].host = undefined;
+  manifest.connections[0].port = 443;
+  manifest.connections[0].tls = {
+    key: fs.readFileSync('/root/letsencrypt/etc/live/api.getnoms.com/privkey.pem'),
+    cert: fs.readFileSync('/root/letsencrypt/etc/live/api.getnoms.com/cert.pem')
+  };
 }
 
 Glue.compose(manifest, { relativeTo: __dirname }, (err, server) => {

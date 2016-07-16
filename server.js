@@ -5,6 +5,10 @@ const Hapi = require('hapi');
 const manifest = require('./config/manifest.json');
 const fs = require('fs');
 
+if (process.env.PORT) {
+  manifest.connections[0].port = process.env.PORT;
+}
+
 if (!process.env.PRODUCTION) {
   manifest.registrations.push({
     "plugin": {

@@ -26,7 +26,10 @@ module.exports.restaurants = {
       return reply({ results: restaurants });
     })
     .catch(function(err) {
+
       return reply({ results: err });
     })
-  }
+  },
+  description: 'Get nearest restaurants',
+  tags: ['api']
 }

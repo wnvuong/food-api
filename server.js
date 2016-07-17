@@ -2,9 +2,9 @@
 
 const Glue = require('glue');
 const Hapi = require('hapi');
-const manifest = require('./config/manifest');
+const Manifest = require('./config/manifest');
 
-Glue.compose(manifest, { relativeTo: __dirname }, (err, server) => {
+Glue.compose(Manifest, { relativeTo: __dirname }, (err, server) => {
 
   if (err) {
     console.log('server.register err:', err);

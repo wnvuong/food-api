@@ -1,4 +1,5 @@
-var secretProperties = require('../secretProperties');
+const Pack = require('../package');
+const secretProperties = require('../secretProperties');
 const fs = require('fs');
 
 module.exports = {
@@ -37,6 +38,28 @@ module.exports = {
     {
       plugin: "./auth"
     },
+    // BEGIN Swagger Documentation
+    {
+      plugin: "inert"
+    },
+    {
+      plugin: "vision"
+    },
+    {
+      plugin: {
+        register: "hapi-swagger",
+        options: {
+          info: {
+            title: "noms API Documentation",
+            version: Pack.version
+          }
+        }
+      },
+      options: {
+        select: ["https"]
+      }
+    },
+    // END Swagger Documentation
     {
       plugin: "./api",
       options: {

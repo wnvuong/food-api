@@ -2,7 +2,7 @@
   "name": "food-api",
   "version": "1.0.0",
   "license": "MIT",
-  "description": "",
+  "description": "noms api",
   "bugs": {
     "url": "https://github.com/wnvuong/food-api/issues"
   },
@@ -26,7 +26,10 @@
     "good-console": "^6.1.2",
     "hapi": "^13.4.1",
     "hapi-auth-jwt2": "^7.0.1",
+    "hapi-swagger": "^6.1.0",
+    "inert": "^4.0.1",
     "letsencrypt-express": "^1.1.5",
+    "vision": "^4.1.0",
     "yelp": "^1.0.1"
   },
   "devDependencies": {

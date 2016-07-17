@@ -12,10 +12,21 @@ module.exports.restaurants = {
   handler: function (request, reply) {
     yelp.search({ category_filter: 'restaurants', location: 'richmond, va' })
     .then(function(data) {
-      return reply({ results: data });
+
+      var restaurants = data.businesses.map(function(orig, index) {
+
+        var simplified = {};
+
+        simplified.name = orig.name;
+        simplified.rating = orig.rating;
+
+        return simplified;
+      });
+
+      return reply({ results: restaurants });
     })
     .catch(function(err) {
-      return reply({ results: data });
+      return reply({ results: err });
     })
   }
 }

@@ -10,7 +10,12 @@ var yelp = new Yelp({
 
 module.exports.restaurants = {
   handler: function (request, reply) {
-    yelp.search({ category_filter: 'restaurants', location: 'richmond, va' })
+
+    const options = {
+      category_filter: 'restaurants',
+      location: 'richmond, va'
+    };
+    yelp.search(options)
     .then(function(data) {
 
       var restaurants = data.businesses.map(function(orig, index) {
@@ -19,6 +24,7 @@ module.exports.restaurants = {
 
         simplified.name = orig.name;
         simplified.rating = orig.rating;
+        simplified.rating_img_url_large = orig.rating_img_url_large;
 
         return simplified;
       });

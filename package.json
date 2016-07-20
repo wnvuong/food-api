@@ -21,6 +21,7 @@
     "url": "git+https://github.com/wnvuong/food-api.git"
   },
   "dependencies": {
+    "assert": "^1.4.1",
     "glue": "^3.2.1",
     "good": "^7.0.1",
     "good-console": "^6.1.2",
@@ -28,7 +29,9 @@
     "hapi-auth-jwt2": "^7.0.1",
     "hapi-swagger": "^6.1.0",
     "inert": "^4.0.1",
+    "joi": "^9.0.1",
     "letsencrypt-express": "^1.1.5",
+    "mongodb": "^2.2.4",
     "vision": "^4.1.0",
     "yelp": "^1.0.1"
   },

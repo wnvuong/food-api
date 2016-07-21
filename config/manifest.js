@@ -52,7 +52,19 @@ module.exports = {
           info: {
             title: "noms API Documentation",
             version: Pack.version
-          }
+          },
+          basePath: '/api',
+          tags: [{
+            name: 'users',
+            description: 'Users data'
+          }, {
+            name: 'restaurants',
+            description: 'Restaurants data'
+          }, {
+            name: 'nomslists',
+            description: 'Users nomslists'
+          }],
+          pathPrefixSize: 2
         }
       },
       options: {

@@ -24,16 +24,21 @@ module.exports.restaurants = {
 
         simplified.name = orig.name;
         simplified.rating = orig.rating;
-        simplified.rating_img_url_large = orig.rating_img_url_large;
 
         return simplified;
       });
 
-      return reply({ results: restaurants });
+      return reply({
+        status: 'success',
+        results: restaurants
+      });
     })
     .catch(function(err) {
 
-      return reply({ results: err });
+      return reply({
+        status: 'failure',
+        results: err
+      });
     })
   },
   description: 'Get nearest restaurants',

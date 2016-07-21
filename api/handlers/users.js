@@ -1,12 +1,11 @@
 'use strict';
 
-const DataProvider = require('../data-provider');
-const Assert = require('assert');
+const UsersProvider = require('../data-provider/users');
 const Joi = require('joi');
 
 module.exports.users = {
   handler: function (request, reply) {
-    DataProvider.getUsers(function(docs) {
+    UsersProvider.getUsers(function(docs) {
       reply(docs);
     })
   },
@@ -14,10 +13,52 @@ module.exports.users = {
   tags: ['api']
 }
 
+module.exports.getUser = {
+  handler: function (request, reply) {
+    UsersProvider.getUser(request.params.userId, function(doc) {
+      reply(doc);
+    })
+  },
+  description: 'Get specific user by ID',
+  tags: ['api'],
+  validate: {
+    params: {
+      userId: Joi.string().required().default('578ec712b5580bb8993d2492')
+    }
+  }
+}
+
+module.exports.updateUser = {
+  handler: function (request, reply) {
+    UsersProvider.updateUser({
+      userId: request.params.userId,
+      lists: request.payload.lists
+    }, function(user) {
+      reply(user);
+    });
+  },
+  description: 'Update user',
+  tags: ['api'],
+  validate: {
+    params: {
+      userId: Joi.string().required().default('578ec712b5580bb8993d2492')
+    },
+    payload: {
+      lists: Joi.array().items(Joi.object({
+        name: Joi.string().example('New York City').required(),
+        items: Joi.array().items(Joi.object({
+          id: Joi.string().example('1a2s3d4f').required(),
+          operation: Joi.string().valid(['add', 'remove']).required()
+        })).min(1).required()
+      })).min(1).required()
+    }
+  }
+}
+
 module.exports.deleteUsers = {
   handler: function(request, reply) {
     if (request.params.password == 'williamvuong') {
-      DataProvider.deleteUsers(function(result) {
+      UsersProvider.deleteUsers(function(result) {
         reply(result);
       })
     } else {
@@ -38,10 +79,9 @@ module.exports.deleteUsers = {
 
 module.exports.addUser = {
   handler: function (request, reply) {
-
     const user = request.payload;
 
-    DataProvider.addUser(user, function(result) {
+    UsersProvider.addUser(user, function(result) {
       reply(result);
     });
   },

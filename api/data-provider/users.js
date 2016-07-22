@@ -33,7 +33,7 @@ module.exports.deleteUsers = function(callback) {
 
     callback({
       status: 'success',
-      deletedCount: r.deletedCount
+      result: r.deletedCount
     });
 
   })
@@ -69,7 +69,7 @@ module.exports.getUser = function(userId, callback) {
   //   MongoInstance.server.log('Found the following document', doc);
   //   callback({
   //     status: 'success',
-  //     result: doc
+  //     results: doc
   //   });
   //
   // });
@@ -93,7 +93,7 @@ module.exports.addUser = function(user, callback) {
 
     callback({
       status: 'success',
-      insertedId: result.insertedId
+      result: result.insertedId
     });
   });
 }
@@ -106,6 +106,6 @@ module.exports.updateUser = function(updateInfo, callback) {
 
   callback({
     status: 'failure',
-    message: 'not yet implemented'
+    result: 'not yet implemented'
   })
 }

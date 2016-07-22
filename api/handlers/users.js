@@ -5,8 +5,8 @@ const Joi = require('joi');
 
 module.exports.users = {
   handler: function (request, reply) {
-    UsersProvider.getUsers(function(docs) {
-      reply(docs);
+    UsersProvider.getUsers(function(result) {
+      reply(result);
     })
   },
   description: 'Get all users. TO BE REMOVED',
@@ -15,8 +15,8 @@ module.exports.users = {
 
 module.exports.getUser = {
   handler: function (request, reply) {
-    UsersProvider.getUser(request.params.userId, function(doc) {
-      reply(doc);
+    UsersProvider.getUser(request.params.userId, function(result) {
+      reply(result);
     })
   },
   description: 'Get specific user by ID',
@@ -33,8 +33,8 @@ module.exports.updateUser = {
     UsersProvider.updateUser({
       userId: request.params.userId,
       lists: request.payload.lists
-    }, function(user) {
-      reply(user);
+    }, function(result) {
+      reply(result);
     });
   },
   description: 'Update user',
@@ -79,9 +79,7 @@ module.exports.deleteUsers = {
 
 module.exports.addUser = {
   handler: function (request, reply) {
-    const user = request.payload;
-
-    UsersProvider.addUser(user, function(result) {
+    UsersProvider.addUser(request.payload, function(result) {
       reply(result);
     });
   },

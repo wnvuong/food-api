@@ -30,14 +30,14 @@ module.exports.restaurants = {
 
       return reply({
         status: 'success',
-        results: restaurants
+        result: restaurants
       });
     })
     .catch(function(err) {
 
       return reply({
         status: 'failure',
-        results: err
+        result: err
       });
     })
   },

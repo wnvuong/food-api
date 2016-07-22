@@ -16,7 +16,7 @@ module.exports.getLists = function(callback) {
 
     callback({
       status: 'success',
-      results: docs
+      result: docs
     });
 
   });
@@ -37,7 +37,7 @@ module.exports.addList = function(listData, callback) {
 
     callback({
       status: 'success',
-      insertedId: result.insertedId
+      result: result.insertedId
     });
   });
 }

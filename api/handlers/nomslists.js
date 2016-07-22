@@ -5,8 +5,8 @@ const Joi = require('joi');
 
 module.exports.lists = {
   handler: function (request, reply) {
-    NomsListsProvider.getLists(function(nomLists) {
-      return reply(nomLists);
+    NomsListsProvider.getLists(function(result) {
+      return reply(result);
     })
   },
   description: 'Get all lists',

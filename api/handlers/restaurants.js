@@ -22,6 +22,7 @@ module.exports.restaurants = {
 
         var simplified = {};
 
+        simplified.id = orig.id;
         simplified.name = orig.name;
         simplified.rating = orig.rating;
 

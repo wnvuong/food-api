@@ -30,7 +30,8 @@ module.exports.addList = function(listData, callback) {
 
   nomsListsCollection.insertOne({
     ownerId: new MongoInstance.mongo.ObjectID(listData.ownerId),
-    name: listData.name
+    name: listData.name,
+    restaurants: []
   }, function(err, result) {
 
     Assert.equal(err, null);

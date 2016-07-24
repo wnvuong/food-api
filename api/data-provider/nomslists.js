@@ -27,9 +27,9 @@ module.exports.getList = function(id, callback) {
   MongoInstance.checkDatabaseandServer();
 
   const nomsListsCollection = MongoInstance.database.collection(nomsListCollectionName)
-  nomsListsCollection.findOne({
+  nomsListsCollection.find({
     '_id': new MongoInstance.mongo.ObjectID(id)
-  }, function(err, doc) {
+  }).toArray(function(err, doc) {
 
     Assert.equal(err, null);
 

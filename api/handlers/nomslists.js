@@ -13,6 +13,21 @@ module.exports.lists = {
   tags: ['api']
 }
 
+module.exports.getList = {
+  handler: function (request, reply) {
+    NomsListsProvider.getList(request.params.listId, function(result) {
+      return reply(result);
+    })
+  },
+  description: 'Get a list',
+  tags: ['api'],
+  validate: {
+    params: {
+      listId: Joi.string().required().example('578ee876f58f94bb9ec01be5')
+    }
+  }
+}
+
 module.exports.addList = {
   handler: function (request, reply) {
     NomsListsProvider.addList(request.payload, function(result) {

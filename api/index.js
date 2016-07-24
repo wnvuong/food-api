@@ -24,6 +24,7 @@ exports.register = (plugin, options, next) => {
 
     // NOMS LISTS
     { method: 'GET', path: '/nomslists', config: NomsLists.lists },
+    { method: 'GET', path: '/nomslists/{listId}', config: NomsLists.getList },
     { method: 'POST', path: '/nomslists', config: NomsLists.addList },
     { method: 'PUT', path: '/nomslists/{listId}', config: NomsLists.updateList }
 

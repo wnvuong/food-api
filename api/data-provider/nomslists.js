@@ -22,6 +22,24 @@ module.exports.getLists = function(callback) {
   });
 }
 
+module.exports.getList = function(id, callback) {
+
+  MongoInstance.checkDatabaseandServer();
+
+  const nomsListsCollection = MongoInstance.database.collection(nomsListCollectionName)
+  nomsListsCollection.findOne({
+    '_id': new MongoInstance.mongo.ObjectID(id)
+  }, function(err, doc) {
+
+    Assert.equal(err, null);
+
+    callback({
+      status: 'success',
+      result: doc
+    });
+  });
+}
+
 module.exports.addList = function(listData, callback) {
 
   MongoInstance.checkDatabaseandServer();

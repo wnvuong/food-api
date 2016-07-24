@@ -59,7 +59,7 @@ module.exports.getRestaurant = function(id, callback) {
 
     callback({
       status: 'success',
-      result: simplified
+      result: [simplified]
     })
   })
   .catch(function(err) {

@@ -101,5 +101,20 @@ module.exports.updateList = function(listData, callback) {
     );
   } else if (listData.remove != null && listData.remove.length > 0) {
     return remove();
+  } else {
+    nomsListsCollection.updateOne(
+      {
+        '_id': new MongoInstance.mongo.ObjectID(listData.listId)
+      },
+      modifications,
+      function(err, r) {
+        Assert.equal(err, null);
+
+        return callback({
+          status: 'success',
+          result: r
+        });
+      }
+    );
   }
 }

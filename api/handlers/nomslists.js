@@ -23,8 +23,8 @@ module.exports.addList = {
   tags: ['api'],
   validate: {
     payload: {
-      ownerId: Joi.string().required().default('578ec712b5580bb8993d2492'),
-      name: Joi.string().required().default('New York City')
+      ownerId: Joi.string().required().example('578ec712b5580bb8993d2492'),
+      name: Joi.string().required().example('New York City')
     }
   }
 }
@@ -44,10 +44,10 @@ module.exports.updateList = {
   tags: ['api'],
   validate: {
     params: {
-      listId: Joi.string().required().default('578ee876f58f94bb9ec01be5')
+      listId: Joi.string().required().example('578ee876f58f94bb9ec01be5')
     },
     payload: {
-      name: Joi.string().invalid('').default('New York City'),
+      name: Joi.string().invalid('').example('New York City'),
       add: Joi.array().items(Joi.object({
         yelpId: Joi.string().example('1a2s3d4f').required()
       })).min(1),

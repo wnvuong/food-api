@@ -23,7 +23,7 @@ module.exports.getUser = {
   tags: ['api'],
   validate: {
     params: {
-      userId: Joi.string().required().default('578ec712b5580bb8993d2492')
+      userId: Joi.string().required().example('578ec712b5580bb8993d2492')
     }
   }
 }
@@ -41,7 +41,7 @@ module.exports.updateUser = {
   tags: ['api'],
   validate: {
     params: {
-      userId: Joi.string().required().default('578ec712b5580bb8993d2492')
+      userId: Joi.string().required().example('578ec712b5580bb8993d2492')
     },
     payload: {
       lists: Joi.array().items(Joi.object({
@@ -87,8 +87,8 @@ module.exports.addUser = {
   tags: ['api'],
   validate: {
     payload: Joi.object({
-      firstName: Joi.string().required().default('Willy'),
-      lastName: Joi.string().required().default('Prosciutto')
+      firstName: Joi.string().required().example('Willy'),
+      lastName: Joi.string().required().example('Prosciutto')
     })
   }
 }

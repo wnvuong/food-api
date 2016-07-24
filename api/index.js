@@ -14,6 +14,7 @@ exports.register = (plugin, options, next) => {
 
     // RESTAURANTS
     { method: 'GET', path: '/restaurants', config: Restaurants.restaurants },
+    { method: 'GET', path: '/restaurants/{restaurantId}', config: Restaurants.restaurant },
 
     // USERS
     { method: 'GET', path: '/users', config: Users.users },

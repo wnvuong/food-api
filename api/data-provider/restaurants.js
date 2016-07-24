@@ -1,3 +1,5 @@
+'use strict';
+
 var Yelp = require('yelp');
 const secretProperties = require('../../secretProperties');
 
@@ -20,12 +22,12 @@ module.exports.getRestaurants = function(callback) {
 
     var restaurants = data.businesses.map(function(orig, index) {
 
-      var simplified = {};
-
-      simplified.id = orig.id;
-      simplified.name = orig.name;
-      simplified.rating = orig.rating;
-      simplified.coordinate = orig.location.coordinate;
+      let simplified = {
+        id: orig.id,
+        name: orig.name,
+        rating: orig.rating,
+        coordinate: orig.location.coordinate
+      }
 
       return simplified;
     });
@@ -41,5 +43,30 @@ module.exports.getRestaurants = function(callback) {
       status: 'failure',
       result: err
     });
+  })
+}
+
+module.exports.getRestaurant = function(id, callback) {
+  yelp.business(id)
+  .then(function(data) {
+
+    let simplified = {
+      id: data.id,
+      name: data.name,
+      rating: data.rating,
+      coordinate: data.location.coordinate
+    }
+
+    callback({
+      status: 'success',
+      result: simplified
+    })
+  })
+  .catch(function(err) {
+
+    callback({
+      status: 'failure',
+      result: err
+    })
   })
 }

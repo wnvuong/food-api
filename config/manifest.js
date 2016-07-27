@@ -1,24 +1,13 @@
 const Pack = require('../package');
 const secretProperties = require('../secretProperties');
-const fs = require('fs');
+
+var swaggerAttachTag = "http";
+if (process.env.PRODUCTION) {
+  swaggerAttachTag = "https";
+}
 
 module.exports = {
   connections: [
-    {
-      host: secretProperties.HOSTNAME,
-      port: secretProperties.HTTPS_PORT,
-      routes: {
-        cors: true
-      },
-      router: {
-        stripTrailingSlash: true
-      },
-      labels: ["https"],
-      tls: {
-        key: fs.readFileSync(secretProperties.SSL_KEY_PATH),
-        cert: fs.readFileSync(secretProperties.SSL_CERT_PATH)
-      }
-    },
     {
       host: secretProperties.HOSTNAME,
       port: secretProperties.HTTP_PORT,
@@ -68,25 +57,21 @@ module.exports = {
         }
       },
       options: {
-        select: ["https"]
+        select: [swaggerAttachTag]
       }
     },
     // END Swagger Documentation
+    // BEGIN Routes
     {
       plugin: "./api",
       options: {
-        select: ["https"],
+        select: ["http"],
         routes: {
           prefix: "/api"
         }
       }
     },
-    {
-      plugin: "./redirect",
-      options: {
-        select: ["http"]
-      }
-    },
+    // END Routes
     {
       plugin: {
         register: "blipp",

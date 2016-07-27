@@ -81,7 +81,7 @@ module.exports.updateList = function(listData, callback) {
 
         callback({
           status: 'success',
-          result: r
+          result: [r]
         });
       }
     );
@@ -112,7 +112,7 @@ module.exports.updateList = function(listData, callback) {
         } else {
           return callback({
             status: 'success',
-            result: r
+            result: [r]
           });
         }
       }
@@ -130,7 +130,7 @@ module.exports.updateList = function(listData, callback) {
 
         return callback({
           status: 'success',
-          result: r
+          result: [r]
         });
       }
     );

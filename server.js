@@ -5,6 +5,7 @@ const Hapi = require('hapi');
 const Manifest = require('./config/manifest');
 const fs = require('fs');
 const initDatabase = require('./api/data-provider').initDatabase;
+const secretProperties = require('./secretProperties');
 
 if (process.env.PRODUCTION) {
 

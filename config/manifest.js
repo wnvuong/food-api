@@ -2,8 +2,10 @@ const Pack = require('../package');
 const secretProperties = require('../secretProperties');
 
 var swaggerAttachTag = "http";
+var routesAttachTag = "http";
 if (process.env.PRODUCTION) {
   swaggerAttachTag = "https";
+  routesAttachTag = "https";
 }
 
 module.exports = {
@@ -65,7 +67,7 @@ module.exports = {
     {
       plugin: "./api",
       options: {
-        select: ["http"],
+        select: [routesAttachTag],
         routes: {
           prefix: "/api"
         }

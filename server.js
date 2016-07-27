@@ -7,8 +7,6 @@ const fs = require('fs');
 const initDatabase = require('./api/data-provider').initDatabase;
 
 if (process.env.PRODUCTION) {
-  // specify which connection tag our routes should attach to
-  routes.options.select = ["https"];
 
   // we want http to redirect to https in production
   Manifest.registrations.push({

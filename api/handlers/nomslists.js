@@ -72,3 +72,18 @@ module.exports.updateList = {
     }
   }
 }
+
+module.exports.deleteList = {
+  handler: function (request, reply) {
+    NomsListsProvider.deleteList(request.params.listId, function (result) {
+      return reply(result);
+    })
+  },
+  description: 'Delete a list',
+  tags: ['api'],
+  validate: {
+    params: {
+      listId: Joi.string().required().example('578ee876f58f94bb9ec01be5')
+    }
+  }
+}

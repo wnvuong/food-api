@@ -56,7 +56,7 @@ module.exports.addList = function(listData, callback) {
 
     callback({
       status: 'success',
-      result: result.insertedId
+      result: [result.insertedId]
     });
   });
 }
@@ -135,4 +135,23 @@ module.exports.updateList = function(listData, callback) {
       }
     );
   }
+}
+
+module.exports.deleteList = function(id, callback) {
+
+  MongoInstance.checkDatabaseandServer();
+
+  const nomsListsCollection = MongoInstance.database.collection(nomsListCollectionName)
+
+  nomsListsCollection.deleteOne({
+    '_id': new MongoInstance.mongo.ObjectID(id)
+  }, function(err, r) {
+
+    Assert.equal(err, null);
+
+    callback({
+      status: 'success',
+      result: [r]
+    })
+  })
 }

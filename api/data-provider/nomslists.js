@@ -56,7 +56,9 @@ module.exports.addList = function(listData, callback) {
 
     callback({
       status: 'success',
-      result: [result.insertedId]
+      result: [{
+        id: result.insertedId
+      }]
     });
   });
 }

@@ -14,7 +14,8 @@ module.exports.getRestaurants = function(callback) {
 
   const options = {
     category_filter: 'restaurants',
-    location: 'richmond, va'
+    location: 'richmond, va',
+    sort: 1
   };
 
   yelp.search(options)
